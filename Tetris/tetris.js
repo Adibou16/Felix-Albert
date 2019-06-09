@@ -1,28 +1,45 @@
-var bw = 240;
-var bh = 400;
-var p = 10;
-var cw = bw + (p * 2) + 1;
-var ch = bh + (p * 2) + 1;
+var w = 240;
+var h = 400;
+var step = 20;
+var canvasElementId = 'grid';
 
-var canvas = document.getElementById("canvas");
-var context = canvas.getContext("2d");
 
-function drawBoard() {
-    for (var x = 0; x <= bw; x += 40) {
-        context.moveTo(0.5 + x + p, p);
-        context.lineTo(0.5 + x + p, bh + p);
+var canvas = document.getElementById(canvasElementId);
+canvas.width = w;
+canvas.height = h;
+
+var ctx = canvas.getContext('2d');
+
+var drawGrid = function(ctx, w, h, step) {
+    ctx.beginPath();
+    for (var x = 0; x <= w; x += step) {
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, h);
     }
-
-    for (var x = 0; x <= bh; x += 40) {
-        context.moveTo(p, 0.5 + x + p);
-        context.lineTo(bw + p, 0.5 + x + p);
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    ctx.beginPath();
+    for (var y = 0; y <= h; y += step) {
+        ctx.moveTo(0, y);
+        ctx.lineTo(w, y);
     }
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 1;
+    ctx.stroke();
 
-    context.strokeStyle = "white";
-    context.stroke();
-}
+    function draw() {
+        context.fillStyle = '#000';
+        context.fillRect(0, 0, canvas.width, canvas.height);
 
-drawBoard();
+        drawMatrix(arena, { x: 0, y: 0 });
+        drawMatrix(player.matrix, player.pos);
+    }
+    draw()
+};
+
+
+drawGrid(ctx, w, h, step);
 
 context.scale(20, 20);
 
@@ -233,7 +250,7 @@ function update(time = 0) {
 
     lastTime = time;
 
-    draw();
+    drawGrid(ctx, w, h, step);
     requestAnimationFrame(update);
 }
 
