@@ -1,14 +1,15 @@
 var w = 240;
 var h = 400;
 var step = 20;
-var canvasElementId = 'grid';
-
+var canvasElementId = "grid";
 
 const canvas = document.getElementById(canvasElementId);
 canvas.width = w;
 canvas.height = h;
 
 var ctx = canvas.getContext('2d');
+
+ctx.scale(20, 20);
 
 function drawGrid(ctx, w, h, step) {
     ctx.beginPath();
@@ -28,20 +29,12 @@ function drawGrid(ctx, w, h, step) {
     ctx.lineWidth = 1;
     ctx.stroke();
 
-    function draw() {
-        context.fillStyle = '#000';
-        context.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        drawMatrix(arena, { x: 0, y: 0 });
-        drawMatrix(player.matrix, player.pos);
-    }
-    draw()
+    drawMatrix(arena, { x: 0, y: 0 });
+    drawMatrix(player.matrix, player.pos);
 };
-
-
-drawGrid(ctx, w, h, step);
-
-context.scale(20, 20);
 
 function arenaSweep() {
     let rowCount = 1;
@@ -134,8 +127,8 @@ function drawMatrix(matrix, offset) {
     matrix.forEach((row, y) => {
         row.forEach((value, x) => {
             if (value !== 0) {
-                context.fillStyle = colors[value];
-                context.fillRect(x + offset.x,
+                ctx.fillStyle = colors[value];
+                ctx.fillRect(x + offset.x,
                     y + offset.y,
                     1, 1);
             }
