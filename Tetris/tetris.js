@@ -4,13 +4,13 @@ var step = 20;
 var canvasElementId = 'grid';
 
 
-var canvas = document.getElementById(canvasElementId);
+const canvas = document.getElementById(canvasElementId);
 canvas.width = w;
 canvas.height = h;
 
 var ctx = canvas.getContext('2d');
 
-var drawGrid = function(ctx, w, h, step) {
+function drawGrid(ctx, w, h, step) {
     ctx.beginPath();
     for (var x = 0; x <= w; x += step) {
         ctx.moveTo(x, 0);
@@ -143,14 +143,6 @@ function drawMatrix(matrix, offset) {
     });
 }
 
-function draw() {
-    context.fillStyle = '#000';
-    context.fillRect(0, 0, canvas.width, canvas.height);
-
-    drawMatrix(arena, { x: 0, y: 0 });
-    drawMatrix(player.matrix, player.pos);
-}
-
 function merge(arena, player) {
     player.matrix.forEach((row, y) => {
         row.forEach((value, x) => {
@@ -261,13 +253,17 @@ function updateScore() {
 document.addEventListener('keydown', event => {
     if (event.keyCode === 65) {
         playerMove(-1);
-    } else if (event.keyCode === 68) {
+    }
+    if (event.keyCode === 68) {
         playerMove(1);
-    } else if (event.keyCode === 83) {
+    }
+    if (event.keyCode === 83) {
         playerDrop();
-    } else if (event.keyCode === 81) {
+    }
+    if (event.keyCode === 81) {
         playerRotate(-1);
-    } else if (event.keyCode === 69) {
+    }
+    if (event.keyCode === 69) {
         playerRotate(1);
     }
 });
