@@ -19,7 +19,7 @@ function drawGrid(ctx, w, h, step) {
         ctx.lineTo(x, h);
     }
     ctx.strokeStyle = 'white';
-    ctx.lineWidth = 1;
+    ctx.lineWidth = 0.5;
     ctx.stroke();
     ctx.beginPath();
     for (var y = 0; y <= h; y += step) {
@@ -27,7 +27,7 @@ function drawGrid(ctx, w, h, step) {
         ctx.lineTo(w, y);
     }
     ctx.strokeStyle = 'white';
-    ctx.lineWidth = 1;
+    ctx.lineWidth = 0.5;
     ctx.stroke();
 
     drawMatrix(arena, { x: 0, y: 0 });
