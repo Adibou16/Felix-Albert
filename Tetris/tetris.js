@@ -1,5 +1,6 @@
 var w = 240;
 var h = 400;
+let scl = 20
 var step = 20;
 var canvasElementId = "grid";
 
@@ -9,9 +10,9 @@ canvas.height = h;
 
 var ctx = canvas.getContext('2d');
 
-ctx.scale(20, 20);
-
 function drawGrid(ctx, w, h, step) {
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
     for (var x = 0; x <= w; x += step) {
         ctx.moveTo(x, 0);
@@ -28,9 +29,6 @@ function drawGrid(ctx, w, h, step) {
     ctx.strokeStyle = 'white';
     ctx.lineWidth = 1;
     ctx.stroke();
-
-    ctx.fillStyle = '#000';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     drawMatrix(arena, { x: 0, y: 0 });
     drawMatrix(player.matrix, player.pos);
@@ -128,9 +126,9 @@ function drawMatrix(matrix, offset) {
         row.forEach((value, x) => {
             if (value !== 0) {
                 ctx.fillStyle = colors[value];
-                ctx.fillRect(x + offset.x,
-                    y + offset.y,
-                    1, 1);
+                ctx.fillRect(x * scl + offset.x*scl,
+                    y * scl + offset.y*scl,
+                    scl, scl);
             }
         });
     });
@@ -181,7 +179,7 @@ function playerDrop() {
 function playerMove(offset) {
     player.pos.x += offset;
     if (collide(arena, player)) {
-        player.pos.x -= offset;
+         player.pos.x -= offset;
     }
 }
 
