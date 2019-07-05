@@ -126,8 +126,8 @@ function drawMatrix(matrix, offset) {
         row.forEach((value, x) => {
             if (value !== 0) {
                 ctx.fillStyle = colors[value];
-                ctx.fillRect(x * scl + offset.x*scl,
-                    y * scl + offset.y*scl,
+                ctx.fillRect(x * scl + offset.x * scl,
+                    y * scl + offset.y * scl,
                     scl, scl);
             }
         });
@@ -179,7 +179,7 @@ function playerDrop() {
 function playerMove(offset) {
     player.pos.x += offset;
     if (collide(arena, player)) {
-         player.pos.x -= offset;
+        player.pos.x -= offset;
     }
 }
 
