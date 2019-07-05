@@ -1,0 +1,43 @@
+html {
+    background: lightgray;
+}
+
+.navbar {
+    width: auto;
+    margin: 0 auto;
+    display: table;
+    padding: 10px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.5)
+}
+
+li {
+    list-style: none;
+}
+
+.navbar ul {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    font-family: 'Rubik Mono One', sans-serif;
+    display: inline-block;
+    margin: 6px;
+}
+
+.divli {
+    width: 42;
+    height: auto;
+    padding: 5
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    transition: all ease-in-out 250ms;
+}
+
+a:hover {
+    color: #222222;
+}
