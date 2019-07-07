@@ -1,5 +1,8 @@
 html {
-    background: lightgray;
+    background: url(li.jpg) no-repeat;
+    background-size: cover;
+    text-align: center;
+    font-size: 100px
 }
 
 .navbar {
@@ -7,7 +10,6 @@ html {
     margin: 0 auto;
     display: table;
     padding: 10px;
-    text-align: center;
     background-color: rgba(255, 255, 255, 0.5)
 }
 
@@ -39,5 +41,5 @@ a {
 }
 
 a:hover {
-    color: #222222;
+    color: rgb(41, 43, 95);
 }
