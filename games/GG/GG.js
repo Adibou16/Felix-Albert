@@ -6,7 +6,7 @@ var remaining = 10;
 var input1 = document.querySelector("#ipbox");
 var output1 = document.querySelector("#output");
 
-var btn = document.querySelector("button");
+var btn = document.querySelector("#submit");
 
 btn.addEventListener("click", onMouseClick);
 
